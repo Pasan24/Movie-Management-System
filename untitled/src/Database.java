@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Database {
 
@@ -17,10 +14,17 @@ public class Database {
 
         try {
             Connection connection = DriverManager.getConnection(url,user,password);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+        public Statement getStatement(){
+            return statement ;
         }
     }
 
 
-}
+

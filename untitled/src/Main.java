@@ -4,15 +4,16 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    private static Scanner scanner;
+    private static Scanner scanner =new Scanner(System.in);
+    private static  Database database ; //static method can only access static variables and method
 
     public static void main(String[] args) {
-
+        database = new Database();
         System.out.println(" Welcome to movies Ticket Booking System ");
         System.out.println("1. Login");
         System.out.println("2. Create  new Account");
 
-        Scanner scanner = new Scanner(System.in);
+
 
         int i = scanner.nextInt();
 
