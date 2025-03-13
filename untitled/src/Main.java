@@ -79,5 +79,18 @@ public class Main {
 
         }
 
+        while (UsersDataBase.IsEmailUsed(email, database)) {
+            System.out.println("This email is already USed !");
+            System.out.println("Enter your email ");
+            email = scanner.next();
+
+
+
+        }
+
+        Visitor visitor = new Visitor();
+        visitor.setEmail();
+
+
     }
 }
