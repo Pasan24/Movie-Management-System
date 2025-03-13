@@ -2,13 +2,12 @@ import java.sql.*;
 
 public class Database {
 
-    private String user = "user" ;
-
-    private String password = "1@2@3@" ;
-
+    private String user = "root" ;
+    private String password = "pasanp" ;
     private String url = "jdbc:mysql://localhost/movieticketbookingsystem2" ;
 
     private Statement  statement;
+
 
     public  Database () {
 

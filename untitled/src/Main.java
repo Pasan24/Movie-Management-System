@@ -83,5 +83,6 @@ public class Main {
         visitor.setPassword(password);    // Changed from "password" to password
 
         UsersDataBase.addVisitor(visitor, database);
+        visitor.showList();
     }
 }
