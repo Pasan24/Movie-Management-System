@@ -48,5 +48,36 @@ public class UsersDataBase {
 
     }
 
+    public static int getNextVisitorID(Database database){
+        int ID = 0 ;
+        ArrayList <Visitor> visitors = getAllVisitors(database);
+        if (visitors.size()!=0){
+        int lastRow = visitors.size()-1;
+        Visitor lastVisitor = visitors.get(lastRow);
+        ID= lastVisitor.getID()+1;
+
+        }
+
+
+
+        return ID;
+    }
+
+
+    public static void addVisitor (Visitor v , Database database){
+
+        String insert="INSERT INTO `visitors`(`ID`, `firstName`, `lastName`, `phoneNumber`, `email`, `password`) " +
+                "VALUES ('" +v.getID()+"','" +v.getFirstName()+"','" +v.getLastName()+"','"+v.getEmail()+"'," +
+                "'"+v.getPhoneNumber()+"','"+v.getPassword()+"');";
+
+        try {
+            database.getStatement().execute(insert);
+            System.out.println("USer Created Successfully");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
 }

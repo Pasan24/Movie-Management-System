@@ -6,7 +6,7 @@ public class Database {
 
     private String password = "1@2@3@" ;
 
-    private String url = "jdbc:mysql://localhost/movieticketbookingsystem2 " ;
+    private String url = "jdbc:mysql://localhost/movieticketbookingsystem2" ;
 
     private Statement  statement;
 

@@ -89,7 +89,14 @@ public class Main {
         }
 
         Visitor visitor = new Visitor();
-        visitor.setEmail();
+        visitor.setID(UsersDataBase.getNextVisitorID(database));
+        visitor.setFirstName("firstName");
+        visitor.setLastName("lastName");
+        visitor.setPhoneNumber("phoneNumber");
+        visitor.setEmail("email");
+        visitor.setPassword("password");
+
+        UsersDataBase.addVisitor(visitor,database);
 
 
     }
