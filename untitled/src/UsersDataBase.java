@@ -90,4 +90,66 @@ public class UsersDataBase {
             e.printStackTrace();
         }
     }
+
+    public  static boolean login (String email , String password , Database database){
+        boolean login = false;
+        ArrayList<User> users = new ArrayList<>();
+        users.addAll(getAllVisitors(database));
+
+        for (User u : users) {
+            if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
+               login = true;
+                break;
+            }
+        }
+
+
+        return login;
+    }
+
+
+    public static User getUser (String email , String password , Database database) {
+        ArrayList<User> users = new ArrayList<>();
+        users.addAll(getAllVisitors(database));
+        User user = new Visitor();
+        for (User u : users) {
+            if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
+                user = u;
+                break;
+            }
+        }
+
+        return user;
+
+
+    }
+
+    public static  Visitor login(String email , Database database){
+        Visitor visitor =  new Visitor();
+
+        try {
+
+            ResultSet rs = database.getStatement().executeQuery("SELECT `ID`, `firstName`, `lastName`, `phoneNumber`, " +
+                    "`email`, `password` FROM `visitors` WHERE `email` = '" + email + "';");
+            while(rs.next()){
+                if(rs.getString("email").equals(email) ){
+                    visitor.setID(rs.getInt("ID"));
+                    visitor.setFirstName(rs.getString("firstName"));
+                    visitor.setLastName(rs.getString("lastName"));
+                    visitor.setPhoneNumber(rs.getString("phoneNumber"));
+                    visitor.setEmail(rs.getString("email"));
+                    visitor.setPassword(rs.getString("password"));
+                        break;
+                }
+            }
+
+
+        }catch(SQLException e){
+
+            e.printStackTrace();
+
+        }
+
+        return visitor;
+    }
 }

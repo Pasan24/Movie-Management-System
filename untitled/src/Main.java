@@ -5,7 +5,9 @@ public class Main {
     private static Database database;
 
     public static void main(String[] args) {
+        System.out.println("Starting program...");
         database = new Database();
+        System.out.println("Database initialized...");
         System.out.println("Welcome to movies Ticket Booking System");
         System.out.println("1. Login");
         System.out.println("2. Create new Account");
@@ -33,6 +35,15 @@ public class Main {
 
         System.out.println("Enter Your password:");
         String password = scanner.next();
+
+        if (UsersDataBase.login(email,password,database)){
+                User user = UsersDataBase.getUser(email,password,database);
+                System.out.println("Welcome " + user.getFirstName()+ " "+user.getLastName());
+                user.showList();
+        }else{
+            System.out.println("Incorrect email or Password");
+            login();
+        }
 
         // NOTE: Login functionality not implemented yet
     }
