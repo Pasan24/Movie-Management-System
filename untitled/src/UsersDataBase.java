@@ -18,6 +18,15 @@ public class UsersDataBase {
                     "`email`, `password` FROM `visitors` WHERE `email` = '" + email + "';");
             isUsed = rs.next();
 
+
+            if(!isUsed){
+                ResultSet rs2 = database.getStatement().executeQuery("SELECT `ID`, `firstName`, `lastName`, `phoneNumber`, " +
+                        "`email`, `password` FROM `admins` WHERE `email` = '" + email + "';");
+                isUsed = rs2.next();
+
+            }
+
+
         } catch (Exception e) {
             System.err.println("Error checking email: " + e.getMessage());
             e.printStackTrace();
@@ -151,5 +160,37 @@ public class UsersDataBase {
         }
 
         return visitor;
+    }
+
+    public static ArrayList<Admin > getAllAdmins(Database database) {
+        ArrayList<Admin> admins = new ArrayList<>();
+
+        try {
+            // FIXED: Added null check to prevent NullPointerException
+            if (database.getStatement() == null) {
+                System.err.println("Database statement is null. Check database connection.");
+                return admins; // Return empty list instead of null
+            }
+
+            ResultSet rs = database.getStatement().executeQuery("SELECT * FROM `visitors`;");
+
+            while (rs.next()) {
+               Admin admin = new  Admin();
+              admin.setID(rs.getInt("ID"));
+                admin.setFirstName(rs.getString("firstName"));
+                admin.setLastName(rs.getString("lastName"));
+                admin.setPhoneNumber(rs.getString("phoneNumber"));
+                admin.setEmail(rs.getString("email"));
+                admin.setPassword(rs.getString("password"));
+
+                admins.add(admin);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error getting visitors: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return  admins ;
     }
 }
