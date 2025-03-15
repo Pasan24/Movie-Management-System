@@ -178,7 +178,7 @@ public class UsersDataBase {
                 return admins; // Return empty list instead of null
             }
 
-            ResultSet rs = database.getStatement().executeQuery("SELECT * FROM `visitors`;");
+            ResultSet rs = database.getStatement().executeQuery("SELECT * FROM `admins`;");
 
             while (rs.next()) {
                Admin admin = new  Admin();
