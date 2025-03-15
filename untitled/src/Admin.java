@@ -29,7 +29,7 @@ public class Admin extends User {
         }
     }
 
-    public static void createNewAccount() {
+    public  void createNewAccount() {
 
 
         System.out.println("Enter Your firstName: ");
