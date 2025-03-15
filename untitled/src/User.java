@@ -59,5 +59,5 @@ public abstract class User {
         this.password = password;
     }
 
-    public  abstract  void showList();
+    public  abstract  void showList(Database database);
 }

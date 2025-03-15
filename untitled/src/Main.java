@@ -39,7 +39,7 @@ public class Main {
         if (UsersDataBase.login(email,password,database)){
                 User user = UsersDataBase.getUser(email,password,database);
                 System.out.println("Welcome " + user.getFirstName()+ " "+user.getLastName());
-                user.showList();
+                user.showList(database);
         }else{
             System.out.println("Incorrect email or Password");
             login();

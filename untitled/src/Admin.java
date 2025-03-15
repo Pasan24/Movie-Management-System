@@ -10,7 +10,7 @@ public class Admin extends User {
     }
 
     @Override
-    public void showList(){
+    public void showList(Database database){
         System.out.println(" 1. Add New Movie ");
         System.out.println(" 2. Update Movie");
         System.out.println(" 3. Show Movies");
@@ -24,12 +24,12 @@ public class Admin extends User {
         int i = scanner.nextInt();
         switch (i){
             case 9:
-                createNewAccount();
+                createNewAccount(database);
                 break;
         }
     }
 
-    public  void createNewAccount() {
+    public  void createNewAccount(Database database) {
 
 
         System.out.println("Enter Your firstName: ");
@@ -67,17 +67,17 @@ public class Admin extends User {
             email = scanner.next();
         }
 
-        Visitor visitor = new Visitor();
-        visitor.setID(UsersDataBase.getNextVisitorID(database));
+       Admin admin = new Admin();
+        admin.setID(UsersDataBase.getNextVisitorID( database));
         // FIXED: Changed string literals to actual variables
-        visitor.setFirstName(firstName);  // Changed from "firstName" to firstName
-        visitor.setLastName(lastName);    // Changed from "lastName" to lastName
-        visitor.setPhoneNumber(phoneNumber); // Changed from "phoneNumber" to phoneNumber
-        visitor.setEmail(email);          // Changed from "email" to email
-        visitor.setPassword(password);    // Changed from "password" to password
+        admin.setFirstName(firstName);  // Changed from "firstName" to firstName
+        admin.setLastName(lastName);    // Changed from "lastName" to lastName
+        admin.setPhoneNumber(phoneNumber); // Changed from "phoneNumber" to phoneNumber
+        admin.setEmail(email);          // Changed from "email" to email
+        admin.setPassword(password);    // Changed from "password" to password
 
-        UsersDataBase.addVisitor(visitor, database);
-        visitor.showList();
+        UsersDataBase.addAdmin(admin, database);
+        admin.showList(database);
     }
 
 }
