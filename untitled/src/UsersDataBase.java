@@ -104,6 +104,8 @@ public class UsersDataBase {
         boolean login = false;
         ArrayList<User> users = new ArrayList<>();
         users.addAll(getAllVisitors(database));
+        users.addAll(getAllAdmins(database));
+
 
         for (User u : users) {
             if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
@@ -120,6 +122,7 @@ public class UsersDataBase {
     public static User getUser (String email , String password , Database database) {
         ArrayList<User> users = new ArrayList<>();
         users.addAll(getAllVisitors(database));
+        users.addAll(getAllAdmins(database));
         User user = new Visitor();
         for (User u : users) {
             if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
@@ -162,6 +165,9 @@ public class UsersDataBase {
         return visitor;
     }
 
+
+    //for admins
+
     public static ArrayList<Admin > getAllAdmins(Database database) {
         ArrayList<Admin> admins = new ArrayList<>();
 
@@ -193,4 +199,41 @@ public class UsersDataBase {
 
         return  admins ;
     }
+
+    public static int getNextAdminID(Database database) {
+        int ID = 0;
+        ArrayList<Admin> admins= getAllAdmins(database);
+        if (admins.size() != 0) {
+            int lastRow = admins.size() - 1;
+            Admin lastAdmin = admins.get(lastRow);
+            ID = lastAdmin.getID() + 1;
+        }
+
+        return ID;
+    }
+
+
+    public static void addAdmin(Admin a, Database database) {
+        // FIXED: Fixed SQL query - had email and phoneNumber swapped
+        String insert = "INSERT INTO `admins`(`ID`, `firstName`, `lastName`, `phoneNumber`, `email`, `password`) " +
+                "VALUES ('" + a.getID() + "','" + a.getFirstName() + "','" + a.getLastName() + "','" +
+                a.getPhoneNumber() + "','" + a.getEmail() + "','" + a.getPassword() + "');";
+
+        try {
+            // FIXED: Added null check to prevent NullPointerException
+            if (database.getStatement() == null) {
+                System.err.println("Database statement is null. Check database connection.");
+                return;
+            }
+
+            database.getStatement().execute(insert);
+            System.out.println("User Created Successfully!");
+        } catch (SQLException e) {
+            System.err.println("Error adding visitor: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
 }
