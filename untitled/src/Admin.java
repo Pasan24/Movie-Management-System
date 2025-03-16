@@ -23,6 +23,10 @@ public class Admin extends User {
         System.out.println(" 10. Quit");
         int i = scanner.nextInt();
         switch (i){
+
+            case 1 :
+                MoviesDatabase.addNewMovie(database,scanner);
+                break;
             case 9:
                 createNewAccount(database);
                 break;

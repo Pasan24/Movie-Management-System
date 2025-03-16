@@ -85,6 +85,8 @@ public class UsersDataBase {
                 "VALUES ('" + v.getID() + "','" + v.getFirstName() + "','" + v.getLastName() + "','" +
                 v.getPhoneNumber() + "','" + v.getEmail() + "','" + v.getPassword() + "');";
 
+        String create = "CREATE TABLE ` User " + v.getID()+" - Bookings`(ID int , Seats int , MovieID int , ShowId int); ";
+
         try {
             // FIXED: Added null check to prevent NullPointerException
             if (database.getStatement() == null) {
