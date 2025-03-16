@@ -20,7 +20,7 @@ public class Visitor extends  User{
     }
 
     @Override
-    public void showList(){
+    public void showList(Database database){
         System.out.println("1. View Movies");
         System.out.println("2. Book Tickets");
         System.out.println("3. Cancel Ticket");
