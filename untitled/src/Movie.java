@@ -8,7 +8,7 @@ public class Movie {
     private  String Genre;
     private  int RunningTime;
     private  String Starring;
-    private String Ratiing;
+    private String Rating;
     private ArrayList <Show> shows;
 
     public  Movie(){
@@ -63,12 +63,12 @@ public class Movie {
         Starring = starring;
     }
 
-    public String getRatiing() {
-        return Ratiing;
+    public String getRating() {
+        return Rating;
     }
 
-    public void setRatiing(String ratiing) {
-        Ratiing = ratiing;
+    public void setRating(String rating) {
+        Rating = rating;
     }
 
     public ArrayList<Show> getShows() {

@@ -95,6 +95,7 @@ public class UsersDataBase {
             }
 
             database.getStatement().execute(insert);
+            database.getStatement().execute(create);
             System.out.println("User Created Successfully!");
         } catch (SQLException e) {
             System.err.println("Error adding visitor: " + e.getMessage());
