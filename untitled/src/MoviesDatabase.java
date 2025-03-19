@@ -30,8 +30,14 @@ public class MoviesDatabase {
                 "VALUES (" + ID + ", '" + name + "', '" + language + "', '" + genre + "', " + runningTime + ", '"
                 + starring + "', '" + rating + "')";
 
+        String create = "CREATE TABLE `Movie"+ID+" " +
+                "- Shows ` (ID int , showTime text, capacity int , " +
+                "availableSeats int,place text);";
+
+
         try{
             database.getStatement().execute(insert);
+            database.getStatement().execute(create);
             System.out.println("Movie added successfully ! \n");
             admin.showList(database);
         }catch(SQLException e){
