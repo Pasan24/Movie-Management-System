@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MoviesDatabase {
 
-    public static void addNewMovie(Database database, Scanner s , Admin admin ) {
+    public static void addNewMovie(Database database, Scanner s  ) {
         System.out.println("Enter Movie Name : ");
         String name = s.next();
 
@@ -39,7 +39,7 @@ public class MoviesDatabase {
             database.getStatement().execute(insert);
             database.getStatement().execute(create);
             System.out.println("Movie added successfully ! \n");
-            admin.showList(database);
+
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -80,6 +80,18 @@ public class MoviesDatabase {
 
         }
         return ID;
+    }
+
+    public static  void updateMovie(Database database,Scanner s){
+
+    }
+
+    public static void showMovies (Database database){
+        System.out.println("ID\tName\tLanguage\tGenre\tRunning Time\tStarring\tRating");
+        for (Movie m : getAllMovies(database)){
+            m.print();
+        }
+
     }
 
 

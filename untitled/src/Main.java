@@ -18,6 +18,7 @@ public class Main {
             case 1:
                 login();
                 break;
+
             case 2:
                 createNewAccount();
                 break;

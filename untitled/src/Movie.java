@@ -78,4 +78,11 @@ public class Movie {
     public void setShows(ArrayList<Show> shows) {
         this.shows = shows;
     }
+
+    public void print(){
+        System.out.println(ID+"\t"+name+"\t"+Language+"\t"+Genre+"\t"+RunningTime+"\t"+Starring+"\t"+Rating);
+
+
+    }
+
 }
