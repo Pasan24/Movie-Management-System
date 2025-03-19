@@ -87,10 +87,13 @@ public class MoviesDatabase {
     }
 
     public static void showMovies (Database database){
+        System.out.println("--------------------------------------------------------");
         System.out.println("ID\tName\tLanguage\tGenre\tRunning Time\tStarring\tRating");
+        System.out.println();
         for (Movie m : getAllMovies(database)){
             m.print();
         }
+        System.out.println("--------------------------------------------------------");
 
     }
 

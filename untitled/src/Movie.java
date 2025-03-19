@@ -80,7 +80,7 @@ public class Movie {
     }
 
     public void print(){
-        System.out.println(ID+"\t"+name+"\t"+Language+"\t"+Genre+"\t"+RunningTime+"\t"+Starring+"\t"+Rating);
+        System.out.println(ID+"\t"+name+"\t"+Language+"\t\t"+Genre+"\t\t"+RunningTime+"\t\t\t"+Starring+"\t\t"+Rating);
 
 
     }
