@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MoviesDatabase {
 
-    public static void addNewMovie(Database database, Scanner s) {
+    public static void addNewMovie(Database database, Scanner s , Admin admin ) {
         System.out.println("Enter Movie Name : ");
         String name = s.next();
 
@@ -24,7 +24,19 @@ public class MoviesDatabase {
         System.out.println("Enter Movie Rating : ");
         String rating = s.next();
 
-        String insert = "INSERT INTO `movies`(`ID`, `Name`, `Language`, `Genre`, `Running Time`, `Starring`, `Rating`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]')";
+        int ID = getNextID(database);
+
+        String insert = "INSERT INTO `movies`(`ID`, `Name`, `Language`, `Genre`, `Running Time`, `Starring`, `Rating`) " +
+                "VALUES (" + ID + ", '" + name + "', '" + language + "', '" + genre + "', " + runningTime + ", '"
+                + starring + "', '" + rating + "')";
+
+        try{
+            database.getStatement().execute(insert);
+            System.out.println("Movie added successfully ! \n");
+            admin.showList(database);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
 
 
     }
@@ -50,6 +62,20 @@ public class MoviesDatabase {
         }
         return movies;
     }
+
+    public static int getNextID (Database database){
+        int ID = 0 ;
+        ArrayList<Movie> movies = getAllMovies(database);
+        int size =  movies.size();
+        if(size!=0){
+            Movie lastMovie= movies.get(size-1);
+            ID = lastMovie.getID()+1;
+
+
+        }
+        return ID;
+    }
+
 
 
 

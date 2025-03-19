@@ -25,7 +25,7 @@ public class Admin extends User {
         switch (i){
 
             case 1 :
-                MoviesDatabase.addNewMovie(database,scanner);
+                MoviesDatabase.addNewMovie(database,scanner,this);
                 break;
             case 9:
                 createNewAccount(database);
