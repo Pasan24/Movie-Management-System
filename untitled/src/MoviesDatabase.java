@@ -31,7 +31,7 @@ public class MoviesDatabase {
                 + starring + "', '" + rating + "')";
 
         String create = "CREATE TABLE `Movie"+ID+" " +
-                "- Shows ` (ID int , showTime text, capacity int , " +
+                "_Shows` (ID int , showTime text, capacity int , " +
                 "availableSeats int,place text);";
 
 
