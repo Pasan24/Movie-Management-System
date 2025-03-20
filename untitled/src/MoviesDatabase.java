@@ -185,12 +185,32 @@ public class MoviesDatabase {
             throw new RuntimeException(e);
         }
 
-
         return movie;
-
     }
 
 
+    public static  void deleteMovie(Database database , Scanner s){
+
+        System.out.println("Enter Movie ID(int) (-1 to show all movies) ");
+        int ID= s.nextInt();
+        while(ID==-1){
+            showMovies(database);
+            System.out.println("Enter Movie ID(int) (-1 to show all movies) ");
+            ID = s.nextInt();
+
+        }
+
+        String delete = "DELETE FROM `movies` WHERE `ID ` = "+ID+";";
+        String drop = "DROP TABLE `Movie"+ID+"_Shows`;";
+
+        try {
+            database, getStatement().execute(delete);
+            database, getStatement().execute(drop);
+        }catch(SQLException e){
+            e.printStackTrace();
+
+        }
+    }
 
 
 }
