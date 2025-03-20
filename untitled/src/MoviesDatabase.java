@@ -204,8 +204,8 @@ public class MoviesDatabase {
         String drop = "DROP TABLE `Movie"+ID+"_Shows`;";
 
         try {
-            database, getStatement().execute(delete);
-            database, getStatement().execute(drop);
+            database. getStatement().execute(delete);
+            database. getStatement().execute(drop);
         }catch(SQLException e){
             e.printStackTrace();
 
