@@ -38,6 +38,11 @@ public class Admin extends User {
                 MoviesDatabase.updateMovie(database,scanner);
                 showList(database);
                 break;
+
+            case 4:
+                MoviesDatabase.deleteMovie(database,scanner);
+                showList(database);
+                break;
             case 9:
                 createNewAccount(database);
                 break;

@@ -200,12 +200,13 @@ public class MoviesDatabase {
 
         }
 
-        String delete = "DELETE FROM `movies` WHERE `ID ` = "+ID+";";
-        String drop = "DROP TABLE `Movie"+ID+"_Shows`;";
+        String delete = "DELETE FROM `movies` WHERE `ID` = "+ID+";";
+        String drop = "DROP TABLE `Movie"+ID+" _Shows`;"; //space needs to be there
 
         try {
             database. getStatement().execute(delete);
             database. getStatement().execute(drop);
+            System.out.println("Movie deleted Successfully !");
         }catch(SQLException e){
             e.printStackTrace();
 
