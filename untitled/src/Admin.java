@@ -46,6 +46,12 @@ public class Admin extends User {
             case 9:
                 createNewAccount(database);
                 break;
+            case 10:
+                System.out.println("Thanks for  visiting us !");
+                scanner.close();
+                break;
+
+
         }
     }
 
