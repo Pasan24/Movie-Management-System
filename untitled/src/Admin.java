@@ -12,8 +12,8 @@ public class Admin extends User {
     @Override
     public void showList(Database database){
         System.out.println(" 1. Add New Movie ");
-        System.out.println(" 2. Update Movie");
-        System.out.println(" 3. Show Movies");
+        System.out.println(" 2.Show Movie");
+        System.out.println(" 3. UpdateMovies");
         System.out.println(" 4. Delete Movie");
         System.out.println(" 5. Add Show Time");
         System.out.println(" 6. Update Show Time");
@@ -29,8 +29,13 @@ public class Admin extends User {
                 showList(database);
                 break;
 
-            case 3:
+            case 2:
                 MoviesDatabase.showMovies(database);
+                showList(database);
+                break;
+
+            case 3:
+                MoviesDatabase.updateMovie(database,scanner);
                 showList(database);
                 break;
             case 9:
