@@ -86,14 +86,14 @@ public class MoviesDatabase {
     public static  void updateMovie(Database database,Scanner s){
         System.out.println("Enter Movie ID(int) (-1 to show all movies) ");
         int ID = s.nextInt();
-        while(ID==1){
+        while(ID==-1){
             showMovies(database);
             System.out.println("Enter Movie ID(int) (-1 to show all movies) ");
             ID = s.nextInt();
 
         }
 
-        Movie movie = getMovie (ID, database);
+        Movie movie = getMovie (ID,database);
 
         System.out.println("Enter Movie Name : (-1 to keep old value)");
         String name = s.next();
@@ -165,16 +165,21 @@ public class MoviesDatabase {
         String select = "SELECT `ID`, `Name`, `Language`, `Genre`, `Running Time`, `Starring`, `Rating` FROM" +
                 " `movies` WHERE `ID`= "+ID+" ;";
 
+
         try {
             ResultSet rs = database.getStatement().executeQuery(select);
-            rs.next();
-            movie.setID(rs.getInt("ID"));
-            movie.setName(rs.getString("Name"));
-            movie.setLanguage(rs.getString("Language"));
-            movie.setGenre(rs.getString("Genre"));
-            movie.setRunningTime(rs.getInt("Running Time"));
-            movie.setStarring(rs.getString("Starring"));
-            movie.setRating(rs.getString("Rating"));
+            if (rs.next()) {  // Check if result set has any rows
+                movie.setID(rs.getInt("ID"));
+                movie.setName(rs.getString("Name"));
+                movie.setLanguage(rs.getString("Language"));
+                movie.setGenre(rs.getString("Genre"));
+                movie.setRunningTime(rs.getInt("Running Time"));
+                movie.setStarring(rs.getString("Starring"));
+                movie.setRating(rs.getString("Rating"));
+            } else {
+                throw new RuntimeException("No movie found with ID: " + ID);
+            }
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
