@@ -4,7 +4,7 @@ public class Show  {
 
     private int ID;
     private LocalDateTime showTime;
-    private int  bookedSeats;
+    private int  availableSeats;
     private String place;
     private  int capacity;
 
@@ -29,12 +29,12 @@ public class Show  {
         this.showTime = showTime;
     }
 
-    public int getBookedSeats() {
-        return bookedSeats;
+    public int getAvailableSeats() {
+        return availableSeats;
     }
 
-    public void setBookedSeats(int bookedSeats) {
-        this.bookedSeats = bookedSeats;
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
     }
 
     public String getPlace() {
