@@ -1,6 +1,9 @@
 import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -221,6 +224,18 @@ public class MoviesDatabase {
             System.out.println("Enter Movie ID(int) (-1 to show all movies) ");
             ID = s.nextInt();
         }
+
+
+        System.out.println("Enter Date(YYYY-MM-DD) ");
+        String date = s.next();
+        System.out.println("Enter Time(HH:MM) ");
+        String time = s.next();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dateTime = LocalDateTime.parse(date + " " + time, formatter);
+        System.out.println("enter Capacity (int) :");
+        int capacity = s.nextInt();
+        System.out.println("Enter place :");
+        String place = s.next();
 
 
     }
