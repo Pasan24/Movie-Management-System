@@ -243,7 +243,40 @@ public class MoviesDatabase {
         String insert = "INSERT INTO `movie" + movieID + " _Shows`(`showTime`, `capacity`, `availableSeats`, `place`) " +
                 "VALUES ('" + showID + "' , '" + date+ "', '" + time + "', " + capacity + ", " + capacity + ", '" + place + "');";
 
+
+        try {
+            database.getStatement().execute(insert);
+            System.out.println("Show added successfully ! \n");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
+
+    private ArrayList<Show>getAllMovieShows(Database database, int movieID) {
+        ArrayList<Show> shows = new ArrayList<>();
+        String select = "SELECT * FROM `movie" + movieID + " _Shows`;";
+
+        try {
+            ResultSet rs = database.getStatement().executeQuery(select);
+            while(rs.next()){
+                Show show = new Show();
+                show.setID(rs.getInt("ID"));
+                String date = rs.getString("showTime");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                 DateTimeFormatter dateTime=LocalDateTime.parse(showTimeSt, formatter);
+                show.setShowTime(showTime);
+                show.setCapacity(rs.getInt("capacity"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return shows;
+
+    }
+
 
     private static  int getNextShowID(Database database, int movieID){
         return  0;
