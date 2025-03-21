@@ -218,11 +218,12 @@ public class MoviesDatabase {
 
     public static  void addShowTime(Database database, Scanner s) {
         System.out.println("Enter Movie ID(int) (-1 to show all movies) ");
-        int ID = s.nextInt();
-        while (ID == -1) {
+
+        int movieID = s.nextInt();
+        while (movieID == -1) {
             showMovies(database);
             System.out.println("Enter Movie ID(int) (-1 to show all movies) ");
-            ID = s.nextInt();
+            movieID = s.nextInt();
         }
 
 
@@ -237,6 +238,14 @@ public class MoviesDatabase {
         System.out.println("Enter place :");
         String place = s.next();
 
+        int showID = getNextShowID(database, movieID);
+
+        String insert = "INSERT INTO `movie" + movieID + " _Shows`(`showTime`, `capacity`, `availableSeats`, `place`) " +
+                "VALUES ('" + dateTime + "', " + capacity + ", " + capacity + ", '" + place + "');";
+
+    }
+
+    private static  int getNextShowID(){
 
     }
 
