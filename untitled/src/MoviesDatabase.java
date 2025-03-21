@@ -262,9 +262,9 @@ public class MoviesDatabase {
             while(rs.next()){
                 Show show = new Show();
                 show.setID(rs.getInt("ID"));
-                String date = rs.getString("showTime");
+                String showTimeSt= rs.getString("showTime");
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                 DateTimeFormatter dateTime=LocalDateTime.parse(showTimeSt, formatter);
+               LocalDateTime showTime=LocalDateTime.parse(showTimeSt, formatter);
                 show.setShowTime(showTime);
                 show.setCapacity(rs.getInt("capacity"));
             }
