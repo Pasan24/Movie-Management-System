@@ -241,11 +241,13 @@ public class MoviesDatabase {
         int showID = getNextShowID(database, movieID);
 
         String insert = "INSERT INTO `movie" + movieID + " _Shows`(`showTime`, `capacity`, `availableSeats`, `place`) " +
-                "VALUES ('" + dateTime + "', " + capacity + ", " + capacity + ", '" + place + "');";
+                "VALUES ('" + showID + "' , '" + date+ "', '" + time + "', " + capacity + ", " + capacity + ", '" + place + "');";
 
     }
 
-    private static  int getNextShowID(){
+    private static  int getNextShowID(Database database, int movieID){
+        return  0;
+
 
     }
 
